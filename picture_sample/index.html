@@ -1,14 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <!-- 
-    Modernizrを読み込み。予め下記からダウンロード：
-    https://modernizr.com/download?webp-setclasses
-  -->
-    <script src="lib/modernizr-custom.js"></script>
+    <title>画像形式の比較</title>
     <style>
       body {
         font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -19,12 +14,6 @@
         display: flex;
         flex-wrap: wrap;
         width: 100vw;
-      }
-      .ImgBox {
-        position: relative;
-        width: 512px;
-        height: calc(512px + 20px);
-        max-width: calc(100vw - 40px);
       }
       .ImgBox__small {
         position: relative;
@@ -40,105 +29,61 @@
         font-weight: bold;
         color: #888;
       }
-      .ImgBox_Picture {
+      .ImgBox_Image {
         font-size: 0;
       }
-      .ImgBox_Picture img {
+      .ImgBox_Image img {
         width: 100%;
         height: 100%;
         border: 1px solid #aaa;
         object-fit: contain;
         border-radius: 8px;
       }
-
-      .modernizr-sample {
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-color: #888;
-        position: relative;
-        width: 512px;
-        height: 512px;
-        max-width: 100vw;
-        border: 1px solid #888;
-        border-radius: 8px;
-      }
-      /* WebP対応の場合 */
-      .webp .modernizr-sample {
-        background-image: url(sample.webp);
-      }
-      /* WebP非対応の場合 */
-      .no-webp .modernizr-sample {
-        background-image: url(sample.jpg);
-      }
     </style>
   </head>
   <body>
-    <h2 id="sample1">サンプル1: 各形式を直接表示</h2>
+    <h2>各形式を直接表示</h2>
     <p class="description">
-      直接imgタグで各形式のファイルを読み込む例です。非対応ブラウザではWebPやAVIFは表示されません。<br />
+      imgタグで各形式のファイルを読み込む例です。主要ブラウザーではWebPとAVIFがそのまま表示されます。<br />
       ※
       画像クリックで原寸表示します。画質を同程度にする等の調整は行っていないので、ファイルサイズは参考程度としてください。
     </p>
     <div class="ImgList">
       <div class="ImgBox__small">
-        <div class="ImgBox_Picture">
+        <div class="ImgBox_Image">
           <a href="sample.png" target="_blank">
-            <img src="sample.png" />
+            <img src="sample.png" alt="PNG" />
           </a>
         </div>
-        <div class="ImgBox_Title">PNG(2MB)</div>
+        <div class="ImgBox_Title">PNG (2MB)</div>
       </div>
 
       <div class="ImgBox__small">
-        <div class="ImgBox_Picture">
+        <div class="ImgBox_Image">
           <a href="sample.jpg" target="_blank">
-            <img src="sample.jpg" />
+            <img src="sample.jpg" alt="JPEG" />
           </a>
         </div>
-        <div class="ImgBox_Title">JPEG(280KB)</div>
+        <div class="ImgBox_Title">JPEG (279KB)</div>
       </div>
 
       <div class="ImgBox__small">
-        <div class="ImgBox_Picture">
+        <div class="ImgBox_Image">
           <a href="sample.webp" target="_blank">
-            <img src="sample.webp" />
+            <img src="sample.webp" alt="WebP" />
           </a>
         </div>
-        <div class="ImgBox_Title">WebP(132KB)</div>
+        <div class="ImgBox_Title">WebP (126KB)</div>
       </div>
 
       <div class="ImgBox__small">
-        <div class="ImgBox_Picture">
+        <div class="ImgBox_Image">
           <a href="sample.avif" target="_blank">
-            <img src="sample.avif" />
+            <img src="sample.avif" alt="AVIF" />
           </a>
         </div>
-        <div class="ImgBox_Title">AVIF(89KB)</div>
+        <div class="ImgBox_Title">AVIF (73KB)</div>
       </div>
     </div>
-
-    <h2 id="sample2">サンプル2: Picture要素による出しわけ</h2>
-    <p class="description">
-      picture要素を使ってJPEG/WebP/AVIFの自動選択を行う例です。
-    </p>
-    <div class="ImgBox">
-      <div class="ImgBox_Picture">
-        <picture>
-          <source srcset="sample.avif" type="image/avif" />
-          <source srcset="sample.webp" type="image/webp" />
-          <img src="sample.jpg" />
-        </picture>
-      </div>
-    </div>
-
-    <h2 id="sample3">
-      サンプル3: Modernizrによる出しわけ（CSS画像の切り替え）
-    </h2>
-    <p class="description">
-      Modernizrを使ってCSS画像の出しわけを行う例です。Modernizrは現在AVIFの対応検出をサポートしていないため、JPEG/WebPの選択を行っています。
-    </p>
-    <!-- CSSはheadのstyleタグ末尾をご確認ください -->
-    <div class="modernizr-sample"></div>
   </body>
 </html>

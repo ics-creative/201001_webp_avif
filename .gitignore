@@ -5,6 +5,9 @@
 # Dependency directories
 node_modules/
 
+# Vite build output
+dist/
+
 ### Node ###
 # Logs
 logs
